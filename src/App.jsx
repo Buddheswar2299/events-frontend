@@ -13,7 +13,7 @@ const App = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get("http://localhost:5152/protected", { withCredentials: true });
+        const response = await axios.get("https://events-backend-authenication.onrender.com/protected", { withCredentials: true });
         if (response.status === 200) {
           setIsAuthenticated(true);
         } else {
