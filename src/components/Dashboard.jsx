@@ -61,7 +61,7 @@ const Dashboard = ({setIsAuthenticated}) => {
   const handleLogout = async () => {
     try {
       // Send logout request to backend
-      await axios.post('https://events-backend-data.onrender.com/logout', {}, { withCredentials: true });
+      // await axios.post('https://events-backend-data.onrender.com/logout', {}, { withCredentials: true });
   
       // Clear any local storage or session storage if used
       localStorage.removeItem("token");  
