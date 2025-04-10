@@ -6,6 +6,8 @@ import axios from "axios";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
 import Dashboard from "./components/Dashboard";
+import BlogsPage from "./components/BlogsPage";
+import BlogDetail from "./components/BlogDetail";
 
 const App = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false); 
@@ -13,7 +15,7 @@ const App = () => {
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await axios.get("http://localhost:5152/protected", { withCredentials: true });
+        const response = await axios.get("https://events-backend-authenication.onrender.com/protected", { withCredentials: true });
         if (response.status === 200) {
           setIsAuthenticated(true);
         } else {
@@ -34,9 +36,10 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
+        <Route path="/" element={<BlogsPage />} />
         <Route path="/login" element={<Login setIsAuthenticated={setIsAuthenticated} />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/blogs/:id" element={<BlogDetail />} />
         
         {/* ✅ Ensure dashboard is only accessible if token exists */}
         <Route
